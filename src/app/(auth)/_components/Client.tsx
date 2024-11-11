@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { z, ZodIssue } from "zod";
+import { z } from "zod";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";

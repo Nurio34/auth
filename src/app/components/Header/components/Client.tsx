@@ -13,7 +13,7 @@ function HeaderClient() {
             const height = HeaderElement.current.getBoundingClientRect().height;
             dispatch(getHeight(height));
         }
-    }, []);
+    }, [dispatch]);
 
     return (
         <header
