@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .c-btn {
+        @apply py-[1vh] px-[2vw] rounded-[1vw] transition-all hover:scale-105 active:scale-95;
+    }
+}
