@@ -6,7 +6,8 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "NPM_FLAGS": "--legacy-peer-deps"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^2.3.0",
