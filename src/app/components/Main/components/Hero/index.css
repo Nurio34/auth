@@ -1,0 +1,9 @@
+.Icon {
+    animation: float var(--duration) var(--delay) forwards infinite;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(32px);
+    }
+}

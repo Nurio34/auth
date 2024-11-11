@@ -4,6 +4,9 @@
 
 @layer components {
     .c-btn {
-        @apply py-[1vh] px-[2vw] rounded-[1vw] transition-all hover:scale-105 active:scale-95;
+        @apply py-[0.5vh] px-[2vw] rounded-md font-semibold text-white transition-all hover:scale-105 active:scale-95;
+    }
+    .c-d-btn {
+        @apply py-[0.5vh] px-[2vw] rounded-md font-semibold bg-gray-700 text-gray-400;
     }
 }
