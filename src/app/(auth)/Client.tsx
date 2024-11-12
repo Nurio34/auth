@@ -60,7 +60,7 @@ function AuthClient() {
         if (user) {
             router.push("/");
         }
-    }, [user]);
+    }, [user, router]);
     //! ************************************
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

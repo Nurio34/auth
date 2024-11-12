@@ -12,8 +12,6 @@ function HeaderClient() {
     const dispatch = useAppDispatch();
 
     const { user } = useAppSelector((s) => s.user);
-    const { isSideMenuOpen } = useAppSelector((s) => s.components);
-    const { form } = useAppSelector((s) => s.auth);
 
     useEffect(() => {
         if (HeaderElement.current) {

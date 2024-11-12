@@ -52,7 +52,7 @@ function SignupClientComponent() {
         if (isSubmitted) {
             signup();
         }
-    }, [form, isSubmitted]);
+    }, [form, isSubmitted, dispatch, router]);
 
     return <div hidden></div>;
 }
