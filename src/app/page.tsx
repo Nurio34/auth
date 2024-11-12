@@ -1,13 +1,10 @@
-import BackgroundImage from "./components/BackgroundImage";
-import Header from "./components/Header";
-import Main from "./components/Main";
+import ProviderComponent from "@/store/Provider";
+import HomePageClient from "./Client";
 
-export default function Home() {
+export default function HomePage() {
     return (
-        <div className=" text-white">
-            <BackgroundImage />
-            <Header />
-            <Main />
-        </div>
+        <ProviderComponent>
+            <HomePageClient />
+        </ProviderComponent>
     );
 }

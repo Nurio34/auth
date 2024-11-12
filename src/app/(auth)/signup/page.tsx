@@ -1,3 +1,7 @@
-function Signup() {}
+import SignupComponent from "./components/SignupComponent";
 
-export default Signup;
+function SignupPage() {
+    return <SignupComponent />;
+}
+
+export default SignupPage;

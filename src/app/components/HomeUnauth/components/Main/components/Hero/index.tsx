@@ -24,7 +24,7 @@ function Hero() {
                     className="grid justify-items-center items-center text-center overflow-hidden pt-[10vh]"
                     style={{ minHeight }}
                 >
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="sync">
                         <motion.h1
                             key="title"
                             className="max-w-[23ch] text-[7vw] md:text-[4vw] font-bold"

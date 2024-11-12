@@ -1,4 +1,6 @@
-import Hero from "./Hero";
+"use client";
+
+import Hero from "./components/Hero";
 
 function MainClient() {
     return (

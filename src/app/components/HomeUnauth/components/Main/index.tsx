@@ -1,12 +1,12 @@
 import ProviderComponent from "@/store/Provider";
-import HeaderClient from "./Client";
+import MainClient from "./Client";
 
-function Header() {
+function Main() {
     return (
         <ProviderComponent>
-            <HeaderClient />
+            <MainClient />
         </ProviderComponent>
     );
 }
 
-export default Header;
+export default Main;

@@ -1,11 +1,14 @@
-import ProviderComponent from "./_components/Provider";
+import ProviderComponent from "@/store/Provider";
+import AuthClient from "./Client";
 
 function layout({ children }: { children: React.ReactNode }) {
     return (
-        <div>
-            <ProviderComponent />
+        <>
+            <ProviderComponent>
+                <AuthClient />
+            </ProviderComponent>
             {children}
-        </div>
+        </>
     );
 }
 

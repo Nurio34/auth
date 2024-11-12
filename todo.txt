@@ -1,3 +1,2 @@
 -- Persist redux kurulumu yap
--- Provider componentı oluştur(children alan)
 -- Signup yapınca direk siteyi kullanmaya başla ( Verfy işlemine protected işlerde yönlendir)
