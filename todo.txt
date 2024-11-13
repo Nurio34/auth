@@ -1,1 +1,2 @@
 -- login ve signup sonunda client'a gönderilen "user" objectini dünezle
+commit
