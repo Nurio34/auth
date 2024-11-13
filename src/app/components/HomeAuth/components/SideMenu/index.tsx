@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
-import LogoutButton from "./components/LogoutButton";
 import { useAppSelector } from "@/store/hooks";
-import CloseSideMenuButton from "./components/CloseSideMenuButton";
+import Header from "./components/Header";
+import VerifyAccount from "./components/VerifyAccount";
 
 function SideMenu() {
     const { isSideMenuOpen } = useAppSelector((s) => s.components);
@@ -10,7 +10,7 @@ function SideMenu() {
         <AnimatePresence>
             {isSideMenuOpen && (
                 <motion.nav
-                    className=" fixed top-0 right-0 h-screen w-96 bg-gray-200 space-x-9"
+                    className=" fixed top-0 right-0 h-screen m-w-52 bg-gray-100 py-[1vh] px-[2vw] rounded-tl-lg rounded-bl-lg"
                     initial={{ x: "100%", opacity: 0 }}
                     animate={{ x: "0", opacity: 1 }}
                     exit={{ x: "100%", opacity: 0 }}
@@ -18,8 +18,8 @@ function SideMenu() {
                         type: "tween",
                     }}
                 >
-                    <CloseSideMenuButton />
-                    <LogoutButton />
+                    <Header />
+                    <VerifyAccount />
                 </motion.nav>
             )}
         </AnimatePresence>

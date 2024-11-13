@@ -8,7 +8,11 @@ function CloseSideMenuButton() {
     const closeSideMenu = () => dispatch(setIsSideMenuOpen(false));
 
     return (
-        <button type="button" onClick={closeSideMenu}>
+        <button
+            type="button"
+            onClick={closeSideMenu}
+            className="p-[1vw] rounded-md transition-all hover:bg-gray-200"
+        >
             <IoMdClose />
         </button>
     );

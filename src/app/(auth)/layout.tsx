@@ -1,5 +1,6 @@
 import ProviderComponent from "@/store/Provider";
 import AuthClient from "./Client";
+import Footer from "./_components/Footer";
 
 function layout({ children }: { children: React.ReactNode }) {
     return (
@@ -8,6 +9,7 @@ function layout({ children }: { children: React.ReactNode }) {
                 <AuthClient />
             </ProviderComponent>
             {children}
+            <Footer />
         </>
     );
 }

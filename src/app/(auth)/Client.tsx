@@ -75,10 +75,31 @@ function AuthClient() {
         dispatch(writeIsSubmitted(true));
     };
 
+    const handleIconClick = (name: string) => {
+        if (name === "password") {
+            const passwordInput = document.querySelector(
+                "#password",
+            ) as HTMLInputElement;
+
+            passwordInput.type === "password"
+                ? (passwordInput.type = "text")
+                : (passwordInput.type = "password");
+        }
+        if (name === "passwordConfirm") {
+            const passwordInput = document.querySelector(
+                "#passwordConfirm",
+            ) as HTMLInputElement;
+
+            passwordInput.type === "password"
+                ? (passwordInput.type = "text")
+                : (passwordInput.type = "password");
+        }
+    };
+
     return (
         <>
             {!user && (
-                <main className=" w-screen h-screen grid place-content-start justify-center py-[4vh]">
+                <main className="  grid place-content-start justify-center pt-[4vh]">
                     <Image
                         src={"/next.svg"}
                         width={80}
@@ -94,7 +115,7 @@ function AuthClient() {
                                 App
                             </legend>
                             <div
-                                className=" bg-blue-100 py-[2vh] px-[2vw] rounded-lg border-2 border-blue-100 shadow-lg shadow-blue-100
+                                className=" bg-blue-100 py-[2vh] px-[2vw] rounded-lg border-2 border-blue-200 shadow-lg shadow-blue-200
                         grid gap-[1vh]
                     "
                             >
@@ -125,9 +146,17 @@ function AuthClient() {
                                                 }
                                                 onChange={handleChange}
                                             />
-                                            <div className=" absolute right-0 top-1/2 -translate-y-1/2 -translate-x-2">
+                                            <button
+                                                type="button"
+                                                className=" absolute right-0 top-1/2 -translate-y-1/2 -translate-x-2"
+                                                onClick={() =>
+                                                    handleIconClick(
+                                                        control.name,
+                                                    )
+                                                }
+                                            >
                                                 {control.icon}
-                                            </div>
+                                            </button>
                                         </div>
                                         {errors &&
                                             errors[

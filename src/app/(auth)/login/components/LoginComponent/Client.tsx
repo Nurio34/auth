@@ -8,63 +8,65 @@ import {
     writeIsSubmitted,
 } from "@/store/slices/auth";
 import { setUser } from "@/store/slices/user";
-import { SignupFormSchema } from "@/type/form";
 import { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-function SignupClientComponent() {
+function LoginClientComponent() {
     const { form, isSubmitted } = useAppSelector((s) => s.auth);
     const dispatch = useAppDispatch();
     const router = useRouter();
 
     useEffect(() => {
-        const signup = async () => {
-            const validation = SignupFormSchema.safeParse(form);
-
-            if (!validation.success) {
-                dispatch(writeErrors(validation.error.formErrors.fieldErrors));
-                return;
-            }
-
+        const login = async () => {
             dispatch(writeIsLoading(true));
-
+            console.log("Login...");
             try {
-                const response = await axiosInstance.post("/auth/signup", form);
-
+                const response = await axiosInstance.post("/auth/login", form);
+                console.log(response);
                 if (response.data.status === "success") {
                     toast.success(response.data.message);
                     dispatch(setUser(response.data.user));
-                    dispatch(writeErrors(null));
                     router.push("/");
                 }
             } catch (error) {
                 if (error instanceof AxiosError) {
                     toast.error(error.response?.data.message);
+                    console.log(error);
                 }
             } finally {
                 dispatch(writeIsLoading(false));
+                dispatch(writeErrors(null));
                 dispatch(writeIsSubmitted(false));
             }
         };
 
         if (isSubmitted) {
-            signup();
+            login();
         }
     }, [form, isSubmitted, dispatch, router]);
 
     return (
-        <section className="grid place-content-center py-[4vh]">
-            <div className="bg-blue-100 py-[1vh] px-[2vw] rounded-lg border-2 border-blue-200 shadow-md shadow-blue-200">
-                <article className="flex items-center gap-[1vw]">
-                    <p>Already have an account ?</p>
+        <section className=" grid place-content-center py-[4vh] ">
+            <div className=" bg-blue-100 py-[1vh] px-[2vw] rounded-lg border-2 border-blue-200 shadow-md shadow-blue-200">
+                <article className="flex items-center justify-center gap-[1vw]">
+                    <p>Did you forget your password ?</p>
                     <Link
-                        href="/login"
+                        href={"/forget-password"}
                         className="text-purple-400 underline underline-offset-4"
                     >
-                        Login
+                        Reset your password
+                    </Link>
+                </article>
+                <article className="flex items-center justify-center gap-[1vw]">
+                    <p>Are you new to MyApp ?</p>
+                    <Link
+                        href={"/signup"}
+                        className="text-purple-400 underline underline-offset-4"
+                    >
+                        Create an account
                     </Link>
                 </article>
             </div>
@@ -72,4 +74,4 @@ function SignupClientComponent() {
     );
 }
 
-export default SignupClientComponent;
+export default LoginClientComponent;
