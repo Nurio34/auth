@@ -2,14 +2,7 @@ import axiosInstance from "@/axios";
 import { useAppDispatch } from "@/store/hooks";
 import { setUser } from "@/store/slices/user";
 import { AxiosError } from "axios";
-import {
-    ChangeEvent,
-    FocusEvent,
-    KeyboardEvent,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 function Inputs() {

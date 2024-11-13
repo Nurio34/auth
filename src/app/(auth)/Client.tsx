@@ -70,18 +70,22 @@ function AuthClient() {
                 "#password",
             ) as HTMLInputElement;
 
-            passwordInput.type === "password"
-                ? (passwordInput.type = "text")
-                : (passwordInput.type = "password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
         }
         if (name === "passwordConfirm") {
             const passwordInput = document.querySelector(
                 "#passwordConfirm",
             ) as HTMLInputElement;
 
-            passwordInput.type === "password"
-                ? (passwordInput.type = "text")
-                : (passwordInput.type = "password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
         }
     };
 

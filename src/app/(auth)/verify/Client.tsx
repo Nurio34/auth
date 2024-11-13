@@ -42,7 +42,7 @@ function VerifyClient() {
 
     useEffect(() => {
         resendOtp();
-    }, []);
+    }, [resendOtp]);
 
     return (
         <>
@@ -55,14 +55,14 @@ function VerifyClient() {
                         Please check your email.
                     </h1>
                     <p>
-                        We've sent an Otp Code to{" "}
+                        We have sent an Otp Code to{" "}
                         <span className="text-[green]">
                             {pure(user?.email)}
                         </span>
                     </p>
                     <Inputs />
                     <div className="flex items-center gap-x-[1vw]">
-                        <p>Didn't get the code ?</p>
+                        <p>Did not get the code ?</p>
                         <button
                             type="button"
                             className="text-purple-500 underline underline-offset-2"
