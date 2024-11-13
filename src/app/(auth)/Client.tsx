@@ -91,7 +91,7 @@ function AuthClient() {
 
     return (
         <>
-            {!user && (
+            {!user && path !== "verify" && (
                 <main className="  grid place-content-start justify-center pt-[4vh]">
                     <Image
                         src={"/next.svg"}

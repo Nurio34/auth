@@ -1,1 +1,2 @@
+-- Online app'te verify codu göndermiyor, hata veriyor
 -- login ve signup sonunda client'a gönderilen "user" objectini dünezle

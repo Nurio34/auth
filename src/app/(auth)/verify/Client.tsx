@@ -17,7 +17,7 @@ function VerifyClient() {
 
     //! *** PREVENT THIS ROUTE IS AUTHED ***
     useEffect(() => {
-        if (user?.isVerified) {
+        if (!user || user?.isVerified) {
             router.push("/");
         }
     }, [user, router]);
@@ -42,12 +42,14 @@ function VerifyClient() {
     }, [user?.email]);
 
     useEffect(() => {
-        resendOtp();
-    }, [resendOtp]);
+        if (user && !user.isVerified) {
+            resendOtp();
+        }
+    }, [resendOtp, user]);
 
     return (
         <>
-            {!user?.isVerified && (
+            {user && !user?.isVerified && (
                 <main className=" grid justify-items-center py-[16vh] px-[2vw] gap-y-[1vh] text-center">
                     <div>
                         <MdOutlineMarkEmailRead color="green" size={72} />
