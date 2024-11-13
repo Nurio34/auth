@@ -5,7 +5,7 @@ import { useAppSelector } from "@/store/hooks";
 import { pure } from "@/utils/domPurify";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import Inputs from "./_components/Inputs";
@@ -23,11 +23,12 @@ function VerifyClient() {
     }, [user, router]);
     //! ************************************
 
-    const resendOtp = async () => {
+    const resendOtp = useCallback(async () => {
         try {
             const response = await axiosInstance.post("/auth/resend-otp", {
                 email: user?.email,
             });
+
             console.log(response);
 
             if (response.data.status === "success") {
@@ -38,7 +39,7 @@ function VerifyClient() {
                 toast.error(error.response?.data.message);
             }
         }
-    };
+    }, [user?.email]);
 
     useEffect(() => {
         resendOtp();
