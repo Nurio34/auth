@@ -6,12 +6,11 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { initialFormData, FormType } from "@/type/form";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { writeForm, writeIsSubmitted } from "@/store/slices/auth";
-import { useRouter } from "next/navigation";
 
 export const formControl = [
     {
@@ -52,16 +51,6 @@ function AuthClient() {
     const { errors, isLoading } = useAppSelector((s) => s.auth);
     const { user } = useAppSelector((s) => s.user);
     const dispatch = useAppDispatch();
-
-    const router = useRouter();
-
-    //! *** PREVENT THIS ROUTE IS AUTHED ***
-    useEffect(() => {
-        if (user) {
-            router.push("/");
-        }
-    }, [user, router]);
-    //! ************************************
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setForm((pre) => {

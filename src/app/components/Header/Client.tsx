@@ -15,7 +15,10 @@ function HeaderClient() {
     const dispatch = useAppDispatch();
 
     const path = usePathname();
-    const isAuthPage = path.includes("login") || path.includes("signup");
+    const isAuthPage =
+        path.includes("login") ||
+        path.includes("signup") ||
+        path.includes("verify");
 
     useEffect(() => {
         if (HeaderElement.current) {

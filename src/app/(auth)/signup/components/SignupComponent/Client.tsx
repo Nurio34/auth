@@ -16,9 +16,18 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 function SignupClientComponent() {
+    const { user } = useAppSelector((s) => s.user);
     const { form, isSubmitted } = useAppSelector((s) => s.auth);
     const dispatch = useAppDispatch();
     const router = useRouter();
+
+    //! *** PREVENT THIS ROUTE IS AUTHED ***
+    useEffect(() => {
+        if (user) {
+            router.push("/");
+        }
+    }, [user, router]);
+    //! ************************************
 
     useEffect(() => {
         const signup = async () => {
@@ -56,19 +65,23 @@ function SignupClientComponent() {
     }, [form, isSubmitted, dispatch, router]);
 
     return (
-        <section className="grid place-content-center py-[4vh]">
-            <div className="bg-blue-100 py-[1vh] px-[2vw] rounded-lg border-2 border-blue-200 shadow-md shadow-blue-200">
-                <article className="flex items-center gap-[1vw]">
-                    <p>Already have an account ?</p>
-                    <Link
-                        href="/login"
-                        className="text-purple-400 underline underline-offset-4"
-                    >
-                        Login
-                    </Link>
-                </article>
-            </div>
-        </section>
+        <>
+            {!user && (
+                <section className="grid place-content-center py-[4vh]">
+                    <div className="bg-blue-100 py-[1vh] px-[2vw] rounded-lg border-2 border-blue-200 shadow-md shadow-blue-200">
+                        <article className="flex items-center gap-[1vw]">
+                            <p>Already have an account ?</p>
+                            <Link
+                                href="/login"
+                                className="text-purple-400 underline underline-offset-4"
+                            >
+                                Login
+                            </Link>
+                        </article>
+                    </div>
+                </section>
+            )}
+        </>
     );
 }
 

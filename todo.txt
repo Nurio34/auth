@@ -1,2 +1,1 @@
--- Persist redux kurulumu yap
--- Signup yapınca direk siteyi kullanmaya başla ( Verfy işlemine protected işlerde yönlendir)
+-- login ve signup sonunda client'a gönderilen "user" objectini dünezle

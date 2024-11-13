@@ -9,4 +9,9 @@
     .c-d-btn {
         @apply py-[0.5vh] px-[2vw] rounded-md font-semibold bg-gray-700 text-gray-400;
     }
+
+    .no-spinner::-webkit-inner-spin-button,
+    .no-spinner::-webkit-outer-spin-button {
+        appearance: none;
+    }
 }

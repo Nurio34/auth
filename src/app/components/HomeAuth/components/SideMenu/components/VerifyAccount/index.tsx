@@ -1,11 +1,7 @@
-function VerifyAccount() {
-    const verifyAccount = () => {};
+import Link from "next/link";
 
-    return (
-        <button type="button" onClick={verifyAccount}>
-            Verify Your Account
-        </button>
-    );
+function VerifyAccount() {
+    return <Link href={"/verify"}>Verify Your Account</Link>;
 }
 
 export default VerifyAccount;
