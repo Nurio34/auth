@@ -1,8 +1,21 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import VerifyButton from "./VerifyButton";
 import Countdown from "./Countdown";
+import Passwords from "./Passwords";
+
+export interface ErrorsType {
+    newPassword: string[] | null;
+    newPasswordConfirm: string[] | null;
+}
 
 function Inputs({ timeDiff }: { timeDiff: number }) {
+    const [newPassword, setNewPassword] = useState("");
+    const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
+    const [errors, setErrors] = useState<ErrorsType>({
+        newPassword: null,
+        newPasswordConfirm: null,
+    });
+
     const [otp, setOtp] = useState(["", "", "", ""]);
     const InputElements = useRef<(HTMLInputElement | null)[]>([]);
     const ButtonElement = useRef<HTMLButtonElement | null>(null);
@@ -55,6 +68,13 @@ function Inputs({ timeDiff }: { timeDiff: number }) {
 
     return (
         <div className="space-y-[1vh]">
+            <Passwords
+                newPassword={newPassword}
+                setNewPassword={setNewPassword}
+                newPasswordConfirm={newPasswordConfirm}
+                setNewPasswordConfirm={setNewPasswordConfirm}
+                errors={errors}
+            />
             <div className="flex items-center gap-[1vw]">
                 {otp.map((_, index) => {
                     return (
@@ -64,7 +84,7 @@ function Inputs({ timeDiff }: { timeDiff: number }) {
                             ref={(el) => {
                                 InputElements.current[index] = el;
                             }}
-                            className="bg-blue-100 w-1/12 max-w-[182px] text-5xl md:text-9xl aspect-square grow no-spinner rounded-lg text-center"
+                            className="bg-blue-100 w-1/12 max-w-[100px] text-6xl md:text-7xl aspect-square grow no-spinner rounded-lg text-center"
                             value={otp[index]}
                             onChange={(e) => handleChange(e, index)}
                             onKeyDown={(e) => handleDelete(e, index)}
@@ -73,7 +93,13 @@ function Inputs({ timeDiff }: { timeDiff: number }) {
                 })}
             </div>
             <div className="flex items-center justify-center gap-[2vw]">
-                <VerifyButton ButtonElement={ButtonElement} otp={otp} />
+                <VerifyButton
+                    ButtonElement={ButtonElement}
+                    newPassword={newPassword}
+                    newPasswordConfirm={newPasswordConfirm}
+                    otp={otp}
+                    setErrors={setErrors}
+                />
                 <Countdown timeDiff={timeDiff} />
             </div>
         </div>

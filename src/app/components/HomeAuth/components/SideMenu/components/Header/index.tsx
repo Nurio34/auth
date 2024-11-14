@@ -5,7 +5,6 @@ import CloseSideMenuButton from "./CloseSideMenuButton";
 function Header() {
     const { user } = useAppSelector((s) => s.user);
 
-    console.log(user);
     return (
         <header className=" flex items-center justify-between">
             <div className="flex gap-[1vw] items-center">

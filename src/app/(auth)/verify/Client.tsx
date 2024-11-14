@@ -1,19 +1,24 @@
 "use client";
 
 import axiosInstance from "@/axios";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { pure } from "@/utils/domPurify";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import Inputs from "./_components/Inputs";
+import { setUser } from "@/store/slices/user";
 
 function VerifyClient() {
     const { user } = useAppSelector((s) => s.user);
-
+    const otpExpires = new Date(user?.otpExpires!).getTime();
+    const time = new Date().getTime();
+    const timeDiff = (otpExpires - time) / 1000;
     const router = useRouter();
+
+    const dispatch = useAppDispatch();
 
     //! *** PREVENT THIS ROUTE IS AUTHED ***
     useEffect(() => {
@@ -23,15 +28,14 @@ function VerifyClient() {
     }, [user, router]);
     //! ************************************
 
-    const resendOtp = useCallback(async () => {
+    const resendOtp = async () => {
         try {
             const response = await axiosInstance.post("/auth/resend-otp", {
                 email: user?.email,
             });
 
-            console.log(response);
-
             if (response.data.status === "success") {
+                dispatch(setUser(response.data.user));
                 toast.success(response.data.message);
             }
         } catch (error) {
@@ -39,13 +43,22 @@ function VerifyClient() {
                 toast.error(error.response?.data.message);
             }
         }
-    }, [user?.email]);
+    };
+
+    //! *** PREVENT SENDİNG RESEND OTP AFTER FİRST SİGNUP ***
+    let lastPage = sessionStorage.getItem("last-page");
+    if (lastPage) {
+        lastPage = JSON.parse(lastPage);
+    }
+    //! *****************************************************
 
     useEffect(() => {
-        if (user && !user.isVerified) {
+        if (user && !user.isVerified && lastPage !== "signup") {
             resendOtp();
+        } else {
+            sessionStorage.setItem("last-page", JSON.stringify("verify"));
         }
-    }, [resendOtp, user]);
+    }, []);
 
     return (
         <>
@@ -63,7 +76,7 @@ function VerifyClient() {
                             {pure(user?.email)}
                         </span>
                     </p>
-                    <Inputs />
+                    <Inputs timeDiff={timeDiff} />
                     <div className="flex items-center gap-x-[1vw]">
                         <p>Did not get the code ?</p>
                         <button

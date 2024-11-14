@@ -26,7 +26,7 @@ function SignupClientComponent() {
         if (user) {
             router.push("/");
         }
-    }, [user, router]);
+    }, []);
     //! ************************************
 
     useEffect(() => {
@@ -47,7 +47,11 @@ function SignupClientComponent() {
                     toast.success(response.data.message);
                     dispatch(setUser(response.data.user));
                     dispatch(writeErrors(null));
-                    router.push("/");
+                    router.push("/verify");
+                    sessionStorage.setItem(
+                        "last-page",
+                        JSON.stringify("signup"),
+                    );
                 }
             } catch (error) {
                 if (error instanceof AxiosError) {

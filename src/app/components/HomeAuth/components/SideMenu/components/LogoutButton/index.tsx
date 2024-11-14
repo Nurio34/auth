@@ -17,8 +17,6 @@ function LogoutButton() {
                 toast.success(response.data.message);
             }
         } catch (error) {
-            console.log(error);
-
             if (error instanceof AxiosError) {
                 toast.error(error.response?.data.message);
             }

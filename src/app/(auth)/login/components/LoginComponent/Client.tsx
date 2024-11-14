@@ -31,10 +31,10 @@ function LoginClientComponent() {
     useEffect(() => {
         const login = async () => {
             dispatch(writeIsLoading(true));
-            console.log("Login...");
+
             try {
                 const response = await axiosInstance.post("/auth/login", form);
-                console.log(response);
+
                 if (response.data.status === "success") {
                     toast.success(response.data.message);
                     dispatch(setUser(response.data.user));
@@ -43,7 +43,6 @@ function LoginClientComponent() {
             } catch (error) {
                 if (error instanceof AxiosError) {
                     toast.error(error.response?.data.message);
-                    console.log(error);
                 }
             } finally {
                 dispatch(writeIsLoading(false));

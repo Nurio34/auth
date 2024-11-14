@@ -89,9 +89,11 @@ function AuthClient() {
         }
     };
 
+    const pathCondition = path === "login" || path == "signup";
+
     return (
         <>
-            {!user && path !== "verify" && (
+            {!user && pathCondition && (
                 <main className="  grid place-content-start justify-center pt-[4vh]">
                     <Image
                         src={"/next.svg"}

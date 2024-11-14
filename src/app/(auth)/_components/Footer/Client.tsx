@@ -3,18 +3,23 @@
 import { useAppSelector } from "@/store/hooks";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function FooterClient() {
     const { user } = useAppSelector((s) => s.user);
 
+    const path = usePathname().split("/")[1];
+
+    const classCondition =
+        (user && path === "login") ||
+        (user && path === "signup") ||
+        (!user && path === "verify") ||
+        (user && path === "forget-password");
+
     return (
         <footer
-            className={`flex gap-[4vw] md:gap-[1vw] justify-center items-center flex-wrap
-            ${
-                user &&
-                user.isVerified &&
-                "fixed bottom-0 left-1/2 -translate-x-1/2"
-            }
+            className={`flex w-screen gap-[4vw] md:gap-[1vw] justify-center items-center flex-wrap
+            ${classCondition && "fixed bottom-0 left-1/2 -translate-x-1/2"}
         `}
         >
             <Link href={"/"} className="c-btn relative w-16 aspect-video">

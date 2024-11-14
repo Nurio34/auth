@@ -4,10 +4,10 @@
 
 @layer components {
     .c-btn {
-        @apply py-[0.5vh] px-[2vw] rounded-md font-semibold text-white transition-all hover:scale-105 active:scale-95;
+        @apply py-[0.5vh] px-[2vw] rounded-md font-semibold text-white shadow-md transition-all hover:scale-105 active:scale-95;
     }
     .c-d-btn {
-        @apply py-[0.5vh] px-[2vw] rounded-md font-semibold bg-gray-700 text-gray-400;
+        @apply py-[0.5vh] px-[2vw] rounded-md font-semibold  bg-gray-500 text-gray-400 shadow-md;
     }
 
     .no-spinner::-webkit-inner-spin-button,

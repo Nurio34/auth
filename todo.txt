@@ -1,4 +1,0 @@
--- login ve signup sonunda client'a gönderilen "user" objectini dünezle
--- signup yapınca "verify" page'e redirect
--- otp verification sayfasında coundown yapınca
--- otp inputlarda tüm inputlar dolmadan buton disabled. son input dolunca ve tüm inputlar doluysa button focus

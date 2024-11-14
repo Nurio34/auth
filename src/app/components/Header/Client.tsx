@@ -18,7 +18,9 @@ function HeaderClient() {
     const isAuthPage =
         path.includes("login") ||
         path.includes("signup") ||
-        path.includes("verify");
+        path.includes("verify") ||
+        path.includes("forget-password") ||
+        path.includes("reset-password");
 
     useEffect(() => {
         if (HeaderElement.current) {

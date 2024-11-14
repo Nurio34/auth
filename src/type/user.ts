@@ -4,4 +4,6 @@ export interface UserType {
     email: string;
     isVerified: string;
     createdAt: Date;
+    otpExpires: Date;
+    resetPasswordOtpExpires: Date;
 }
