@@ -1,13 +1,14 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import Inputs from "./_components/Inputs";
-import { setOtpExpires } from "@/store/slices/user";
+import { setIsLoading, setOtpExpires } from "@/store/slices/user";
 import axiosInstance from "@/axios";
 import toast from "react-hot-toast";
 import { AxiosError } from "axios";
+import { useEffect } from "react";
 
 function ResetPasswordPageClient() {
     const { user, otpExpires } = useAppSelector((s) => s.user);
@@ -19,6 +20,15 @@ function ResetPasswordPageClient() {
 
     const params = useSearchParams();
     const email = params.get("email");
+
+    const router = useRouter();
+
+    useEffect(() => {
+        if (user) {
+            router.push("/");
+            return;
+        }
+    }, []);
 
     const resendResetOtp = async () => {
         try {

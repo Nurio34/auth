@@ -96,9 +96,20 @@ function AuthClient() {
             {!user && pathCondition && (
                 <main className="  grid place-content-start justify-center pt-[4vh]">
                     <Image
-                        src={"/next.svg"}
-                        width={80}
-                        height={17}
+                        src={
+                            process.env.NEXT_PUBLIC_LOGO ||
+                            "/logo-placeholder.svg"
+                        }
+                        width={
+                            (process.env.NEXT_PUBLIC_LOGO_WIDTH as
+                                | number
+                                | undefined) || 80
+                        }
+                        height={
+                            (process.env.NEXT_PUBLIC_LOGO_HEIGHT as
+                                | number
+                                | undefined) || 17
+                        }
                         alt="logo"
                         priority
                         className=" justify-self-center"

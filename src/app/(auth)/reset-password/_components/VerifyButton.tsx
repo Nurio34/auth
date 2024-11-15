@@ -73,8 +73,11 @@ function VerifyButton({
                 newPasswordConfirm,
                 otp: otp.join(""),
             });
-            router.push("/login");
-            toast.success(response.data.message);
+
+            if (response.data.status === "success") {
+                router.push("/login");
+                toast.success(response.data.message);
+            }
         } catch (error) {
             if (error instanceof AxiosError) {
                 toast.error(error.response?.data.message);
@@ -98,7 +101,7 @@ function VerifyButton({
             style={{ fontVariant: "small-caps" }}
             onClick={verify}
         >
-            <span>{isLoading ? "Verifing" : "Verify"}</span>
+            <span>{isLoading ? "Reseting Password" : "Reset Password"}</span>
             {isLoading && (
                 <span className="loading loading-spinner loading-md"></span>
             )}

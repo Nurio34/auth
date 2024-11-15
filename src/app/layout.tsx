@@ -21,8 +21,10 @@ const font = Roboto({
 });
 
 export const metadata: Metadata = {
-    title: "Auth",
-    description: "Start building your app with pre-build auth system.",
+    title: process.env.NEXT_PUBLIC_APP_NAME || "My App",
+    description:
+        process.env.NEXT_PUBLIC_APP_DESCRIPTION || "My devestating app",
+    icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({

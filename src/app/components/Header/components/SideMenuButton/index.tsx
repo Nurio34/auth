@@ -11,10 +11,21 @@ function SideMenuButton() {
         <div className=" grid place-content-center">
             <button type="button" onClick={openSideMenu}>
                 <Image
-                    src={"/avatar-placeholder.webp"}
-                    width={48}
-                    height={48}
-                    alt="avatar-placeholder"
+                    src={
+                        process.env.NEXT_PUBLIC_LOGO_AVATAR_IMAGE ||
+                        "/avatar-placeholder.webp"
+                    }
+                    width={
+                        (process.env.NEXT_PUBLIC_LOGO_AVATAR_IMAGE_WIDTH as
+                            | number
+                            | undefined) || 48
+                    }
+                    height={
+                        (process.env.NEXT_PUBLIC_LOGO_AVATAR_IMAGE_HEIGHT as
+                            | number
+                            | undefined) || 48
+                    }
+                    alt="avatar image"
                     priority
                 />
             </button>

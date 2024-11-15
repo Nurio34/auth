@@ -11,10 +11,12 @@ function FooterClient() {
     const path = usePathname().split("/")[1];
 
     const classCondition =
-        (user && path === "login") ||
-        (user && path === "signup") ||
-        (!user && path === "verify") ||
-        (user && path === "forget-password");
+        (path === "login" && user) ||
+        (path === "signup" && user) ||
+        (path === "forget-password" && user) ||
+        (path === "reset-password" && user) ||
+        (path === "verify" && user?.isVerified) ||
+        (path === "verify" && !user);
 
     return (
         <footer
@@ -22,8 +24,24 @@ function FooterClient() {
             ${classCondition && "fixed bottom-0 left-1/2 -translate-x-1/2"}
         `}
         >
-            <Link href={"/"} className="c-btn relative w-16 aspect-video">
-                <Image src={"/next.svg"} fill alt="logo link" />
+            <Link href={"/"} className="c-btn ">
+                <Image
+                    src={
+                        process.env.NEXT_PUBLIC_LOGO || "/logo-placeholder.svg"
+                    }
+                    width={
+                        (process.env.NEXT_PUBLIC_LOGO_WIDTH as
+                            | number
+                            | undefined) || 80
+                    }
+                    height={
+                        (process.env.NEXT_PUBLIC_LOGO_HEIGHT as
+                            | number
+                            | undefined) || 17
+                    }
+                    priority
+                    alt="logo link"
+                />
             </Link>
             <Link
                 href="/terms"

@@ -6,14 +6,21 @@ function Logo() {
 
     return (
         <div className=" flex gap-2 items-center">
-            <figure className=" relative w-9 aspect-square">
-                <Image
-                    src={!user ? "/vercel.svg" : "/next.svg"}
-                    fill
-                    alt="logo"
-                    priority
-                />
-            </figure>
+            <Image
+                src={process.env.NEXT_PUBLIC_LOGO || "/logo-placeholder.svg"}
+                width={
+                    (process.env.NEXT_PUBLIC_LOGO_WIDTH as
+                        | number
+                        | undefined) || 80
+                }
+                height={
+                    (process.env.NEXT_PUBLIC_LOGO_HEIGHT as
+                        | number
+                        | undefined) || 17
+                }
+                alt="logo"
+                priority
+            />
             <p
                 className={`text-2xl font-semibold ${!user && "text-white"}`}
                 style={{ fontVariant: "small-caps" }}

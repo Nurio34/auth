@@ -53,9 +53,20 @@ function ForgetPasswordPageClient() {
             {!user && (
                 <main className=" grid place-content-center justify-items-center py-[16vh] gap-y-[2vh]">
                     <Image
-                        src={"/next.svg"}
-                        width={80}
-                        height={17}
+                        src={
+                            process.env.NEXT_PUBLIC_LOGO ||
+                            "/logo-placeholder.svg"
+                        }
+                        width={
+                            (process.env.NEXT_PUBLIC_LOGO_WIDTH as
+                                | number
+                                | undefined) || 80
+                        }
+                        height={
+                            (process.env.NEXT_PUBLIC_LOGO_HEIGHT as
+                                | number
+                                | undefined) || 17
+                        }
                         alt="logo"
                         priority
                     />

@@ -1,11 +1,12 @@
-import React from "react";
-
 function BackgroundImage() {
+    const bgImage = process.env.NEXT_PUBLIC_UNAUTH_BACKGOUND_IMAGE;
     return (
         <div
             className=" fixed top-0 left-0 w-screen h-screen -z-50"
             style={{
-                backgroundImage: "url('/space.webp')",
+                backgroundImage: `${
+                    bgImage ? `url("${bgImage}")` : "url('/unauth_bg.webp')"
+                }`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",

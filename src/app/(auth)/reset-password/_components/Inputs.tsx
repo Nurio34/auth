@@ -1,7 +1,8 @@
-import { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import VerifyButton from "./VerifyButton";
 import Countdown from "./Countdown";
 import Passwords from "./Passwords";
+import { useAppSelector } from "@/store/hooks";
 
 export interface ErrorsType {
     newPassword: string[] | null;
