@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import Inputs from "./_components/Inputs";
-import { setIsLoading, setOtpExpires } from "@/store/slices/user";
+import { setOtpExpires } from "@/store/slices/user";
 import axiosInstance from "@/axios";
 import toast from "react-hot-toast";
 import { AxiosError } from "axios";
