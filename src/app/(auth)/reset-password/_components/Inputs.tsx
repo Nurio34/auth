@@ -8,7 +8,13 @@ export interface ErrorsType {
     newPasswordConfirm: string[] | null;
 }
 
-function Inputs({ timeDiff }: { timeDiff: number }) {
+function Inputs({
+    email,
+    timeDiff,
+}: {
+    email: string | null;
+    timeDiff: number;
+}) {
     const [newPassword, setNewPassword] = useState("");
     const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
     const [errors, setErrors] = useState<ErrorsType>({
@@ -19,12 +25,6 @@ function Inputs({ timeDiff }: { timeDiff: number }) {
     const [otp, setOtp] = useState(["", "", "", ""]);
     const InputElements = useRef<(HTMLInputElement | null)[]>([]);
     const ButtonElement = useRef<HTMLButtonElement | null>(null);
-
-    useEffect(() => {
-        if (InputElements.current) {
-            InputElements.current[0]?.focus();
-        }
-    }, []);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
         const newOtp = [...otp];
@@ -95,6 +95,7 @@ function Inputs({ timeDiff }: { timeDiff: number }) {
             <div className="flex items-center justify-center gap-[2vw]">
                 <VerifyButton
                     ButtonElement={ButtonElement}
+                    email={email}
                     newPassword={newPassword}
                     newPasswordConfirm={newPasswordConfirm}
                     otp={otp}

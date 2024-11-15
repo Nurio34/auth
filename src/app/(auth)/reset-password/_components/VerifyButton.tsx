@@ -1,6 +1,6 @@
 import axiosInstance from "@/axios";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setIsLoading, setOtpExpires, setUser } from "@/store/slices/user";
+import { setIsLoading } from "@/store/slices/user";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { Dispatch, MutableRefObject, SetStateAction } from "react";
@@ -10,19 +10,20 @@ import { ErrorsType } from "./Inputs";
 
 function VerifyButton({
     ButtonElement,
+    email,
     newPassword,
     newPasswordConfirm,
     otp,
     setErrors,
 }: {
     ButtonElement: MutableRefObject<HTMLButtonElement | null>;
+    email: string | null;
     newPassword: string;
     newPasswordConfirm: string;
     otp: string[];
     setErrors: Dispatch<SetStateAction<ErrorsType>>;
 }) {
-    const { user, isLoading } = useAppSelector((s) => s.user);
-    const email = user?.email;
+    const { isLoading } = useAppSelector((s) => s.user);
     const dispatch = useAppDispatch();
 
     const isOtpProvided = otp.every((box) => box);
@@ -54,7 +55,6 @@ function VerifyButton({
 
     const verify = async () => {
         const validate = ResetPasswordFormSchema.safeParse({
-            email,
             newPassword,
             newPasswordConfirm,
         });
@@ -65,7 +65,7 @@ function VerifyButton({
         }
 
         dispatch(setIsLoading(true));
-
+        console.log(email);
         try {
             const response = await axiosInstance.post("/auth/reset-password", {
                 email,
@@ -73,6 +73,8 @@ function VerifyButton({
                 newPasswordConfirm,
                 otp: otp.join(""),
             });
+            router.push("/login");
+            toast.success(response.data.message);
         } catch (error) {
             if (error instanceof AxiosError) {
                 toast.error(error.response?.data.message);

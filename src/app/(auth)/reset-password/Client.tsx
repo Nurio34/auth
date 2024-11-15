@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useSearchParams } from "next/navigation";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import Inputs from "./_components/Inputs";
-import { setIsLoading, setOtpExpires, setUser } from "@/store/slices/user";
+import { setOtpExpires } from "@/store/slices/user";
 import axiosInstance from "@/axios";
 import toast from "react-hot-toast";
 import { AxiosError } from "axios";
@@ -51,7 +51,7 @@ function ResetPasswordPageClient() {
                         We have sent an Reset Password Otp code to{" "}
                         <span className="text-[green]">{email}</span>
                     </p>
-                    <Inputs timeDiff={timeDiff} />
+                    <Inputs email={email} timeDiff={timeDiff} />
                     <div className="flex items-center gap-x-[1vw]">
                         <p>Did not get the code ?</p>
                         <button

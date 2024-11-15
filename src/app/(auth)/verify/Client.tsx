@@ -13,9 +13,9 @@ import { setUser } from "@/store/slices/user";
 
 function VerifyClient() {
     const { user } = useAppSelector((s) => s.user);
-    const otpExpires = new Date(user?.otpExpires!).getTime();
+    const otpExpires = user?.otpExpires && new Date(user.otpExpires).getTime();
     const time = new Date().getTime();
-    const timeDiff = (otpExpires - time) / 1000;
+    const timeDiff = otpExpires && (otpExpires - time) / 1000;
     const router = useRouter();
 
     const dispatch = useAppDispatch();

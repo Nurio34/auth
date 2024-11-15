@@ -2,7 +2,7 @@ import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import VerifyButton from "./VerifyButton";
 import Countdown from "./Countdown";
 
-function Inputs({ timeDiff }: { timeDiff: number }) {
+function Inputs({ timeDiff }: { timeDiff: number | undefined }) {
     const [otp, setOtp] = useState(["", "", "", ""]);
     const InputElements = useRef<(HTMLInputElement | null)[]>([]);
     const ButtonElement = useRef<HTMLButtonElement | null>(null);

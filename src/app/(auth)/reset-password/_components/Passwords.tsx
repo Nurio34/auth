@@ -1,6 +1,4 @@
-import { useAppSelector } from "@/store/hooks";
 import { Dispatch, SetStateAction } from "react";
-import { z, ZodError } from "zod";
 import { ErrorsType } from "./Inputs";
 
 function Passwords({
@@ -16,8 +14,6 @@ function Passwords({
     setNewPasswordConfirm: Dispatch<SetStateAction<string>>;
     errors: ErrorsType;
 }) {
-    const { user } = useAppSelector((s) => s.user);
-
     return (
         <form
             className="py-[2vh] px-[2vw] rounded-lg bg-blue-100 space-y-[1vh]"
@@ -34,6 +30,7 @@ function Passwords({
                     className="py-1 px-[1vw] rounded-md"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
+                    autoFocus
                 />
                 <p className="text-sm font-semibold justify-self-start text-[red]">
                     {errors && errors.newPassword && errors.newPassword[0]}

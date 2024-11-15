@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 
-function Countdown({ timeDiff }: { timeDiff: number }) {
-    const [time, setTime] = useState(timeDiff);
+function Countdown({ timeDiff }: { timeDiff: number | undefined }) {
+    const [time, setTime] = useState<number>(0);
 
     useEffect(() => {
         // Reset the time when timeDiff prop changes
-        setTime(timeDiff);
+        if (typeof timeDiff === "number") {
+            setTime(timeDiff);
+        }
     }, [timeDiff]);
 
     useEffect(() => {
