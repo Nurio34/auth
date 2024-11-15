@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
 import VerifyButton from "./VerifyButton";
 import Countdown from "./Countdown";
 import Passwords from "./Passwords";

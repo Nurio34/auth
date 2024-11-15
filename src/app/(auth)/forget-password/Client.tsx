@@ -2,7 +2,7 @@
 
 import axiosInstance from "@/axios";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setIsLoading, setOtpExpires, setUser } from "@/store/slices/user";
+import { setIsLoading, setOtpExpires } from "@/store/slices/user";
 import { AxiosError } from "axios";
 import Image from "next/image";
 import Link from "next/link";
