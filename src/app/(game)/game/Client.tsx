@@ -1,7 +1,6 @@
 "use client";
 
 import { useAppSelector } from "@/store/hooks";
-import { randomUUID } from "crypto";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { io, Socket } from "socket.io-client";
 
