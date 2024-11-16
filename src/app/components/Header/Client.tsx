@@ -15,13 +15,10 @@ function HeaderClient() {
     const { user } = useAppSelector((s) => s.user);
     const dispatch = useAppDispatch();
 
-    const path = usePathname();
-    const isAuthPage =
-        path.includes("login") ||
-        path.includes("signup") ||
-        path.includes("verify") ||
-        path.includes("forget-password") ||
-        path.includes("reset-password");
+    const path = usePathname().split("/")[1];
+
+    const isHomepage = path === "";
+    console.log({ isHomepage });
 
     const isGamePage = path.includes("game") || path.includes("scores");
 
@@ -34,7 +31,7 @@ function HeaderClient() {
 
     return (
         <>
-            {!isAuthPage && (
+            {isHomepage && (
                 <header
                     ref={HeaderElement}
                     className={`flex items-center justify-between py-[1vh] px-[2vw] text-white
