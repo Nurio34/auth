@@ -14,13 +14,8 @@ function HeaderClient() {
     const { user } = useAppSelector((s) => s.user);
     const dispatch = useAppDispatch();
 
-    const path = usePathname();
-    const isAuthPage =
-        path.includes("login") ||
-        path.includes("signup") ||
-        path.includes("verify") ||
-        path.includes("forget-password") ||
-        path.includes("reset-password");
+    const path = usePathname().split("/")[1];
+    const isHomePage = path === "";
 
     useEffect(() => {
         if (HeaderElement.current) {
@@ -31,7 +26,7 @@ function HeaderClient() {
 
     return (
         <>
-            {!isAuthPage && (
+            {isHomePage && (
                 <header
                     ref={HeaderElement}
                     className={`flex items-center justify-between py-[1vh] px-[2vw]
