@@ -24,7 +24,11 @@ export const metadata: Metadata = {
     title: process.env.NEXT_PUBLIC_APP_NAME || "My App",
     description:
         process.env.NEXT_PUBLIC_APP_DESCRIPTION || "My devestating app",
+<<<<<<< HEAD
     icons: { icon: process.env.NEXT_PUBLIC_FAVICON || "/favicon.ico" },
+=======
+    icons: { icon: "/favicon.ico" },
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
 };
 
 export default function RootLayout({

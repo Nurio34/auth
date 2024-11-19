@@ -50,7 +50,11 @@ function ResetPasswordPageClient() {
     return (
         <>
             {!user && (
+<<<<<<< HEAD
                 <main className="grid gap-y-[3vh] justify-items-center py-[4vh] md:py-[10vh] px-[2vw] text-center">
+=======
+                <main className=" grid justify-items-center py-[16vh] px-[2vw] gap-y-[1vh] text-center">
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                     <div>
                         <MdOutlineMarkEmailRead color="green" size={72} />
                     </div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { UserType } from "@/type/user";
 import SideMenu from "./components/SideMenu";
 import { useRouter } from "next/navigation";
@@ -21,6 +22,11 @@ function HomeAuth({
         }
     }, []);
 
+=======
+import SideMenu from "./components/SideMenu";
+
+function HomeAuth() {
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
     return (
         <div>
             <SideMenu />

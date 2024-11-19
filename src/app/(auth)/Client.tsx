@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
+<<<<<<< HEAD
 import { usePathname } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { initialFormData, FormType } from "@/type/form";
@@ -11,6 +12,15 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { writeForm, writeIsSubmitted } from "@/store/slices/auth";
 import FireLoginButtons from "./_components/FireLoginButtons";
 import WhatsupGifLogo from "./_components/WhatsupGifLogo";
+=======
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { initialFormData, FormType } from "@/type/form";
+
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { writeForm, writeIsSubmitted } from "@/store/slices/auth";
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
 
 export const formControl = [
     {
@@ -94,6 +104,7 @@ function AuthClient() {
     return (
         <>
             {!user && pathCondition && (
+<<<<<<< HEAD
                 <main className="  grid place-content-start justify-center pt-[2vh] md:pt-[4vh]">
                     <WhatsupGifLogo />
                     <form onSubmit={handleSubmit}>
@@ -103,6 +114,33 @@ function AuthClient() {
                                 <span className=" capitalize">
                                     {process.env.NEXT_PUBLIC_LOGO_NAME}
                                 </span>
+=======
+                <main className="  grid place-content-start justify-center pt-[4vh]">
+                    <Image
+                        src={
+                            process.env.NEXT_PUBLIC_LOGO ||
+                            "/logo-placeholder.svg"
+                        }
+                        width={
+                            (process.env.NEXT_PUBLIC_LOGO_WIDTH as
+                                | number
+                                | undefined) || 80
+                        }
+                        height={
+                            (process.env.NEXT_PUBLIC_LOGO_HEIGHT as
+                                | number
+                                | undefined) || 17
+                        }
+                        alt="logo"
+                        priority
+                        className=" justify-self-center"
+                    />
+                    <form onSubmit={handleSubmit}>
+                        <fieldset>
+                            <legend className="py-[4vh] text-xl font-light tracking-wider text-center">
+                                {path === "login" ? "Login" : "Signup"} to the
+                                App
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                             </legend>
                             <div
                                 className=" bg-blue-100 py-[2vh] px-[2vw] rounded-lg border-2 border-blue-200 shadow-lg shadow-blue-200
@@ -178,7 +216,10 @@ function AuthClient() {
                                         <span className="loading loading-spinner loading-md"></span>
                                     )}
                                 </button>
+<<<<<<< HEAD
                                 <FireLoginButtons />
+=======
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                             </div>
                         </fieldset>
                     </form>

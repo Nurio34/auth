@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+<<<<<<< HEAD
 function FloatingIcons() {
     const isSmallScreen = window.innerWidth < 768;
 
@@ -31,6 +32,36 @@ function FloatingIcons() {
         },
     ];
 
+=======
+const icons = [
+    {
+        src: "/icons/icon-1.webp",
+        label: "icon-1",
+        top: 30,
+        left: -32,
+        delay: "0s",
+        duration: "6s",
+    },
+    {
+        src: "/icons/icon-2.webp",
+        label: "icon-2",
+        top: 0,
+        left: 240,
+        delay: "1s",
+        duration: "7s",
+    },
+    {
+        src: "/icons/icon-3.webp",
+        label: "icon-3",
+        top: 180,
+        left: 100,
+        delay: "2s",
+        duration: "8s",
+    },
+];
+
+function FloatingIcons() {
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
     return (
         <motion.div
             key="icons"

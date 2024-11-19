@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import Inputs from "./_components/Inputs";
+<<<<<<< HEAD
 import { setOtpExpires, setUser } from "@/store/slices/user";
 
 function VerifyClient() {
@@ -17,6 +18,15 @@ function VerifyClient() {
     const otpExpiresRef = otpExpires && new Date(otpExpires).getTime();
     const time = new Date().getTime();
     const timeDiff = otpExpiresRef && (otpExpiresRef - time) / 1000;
+=======
+import { setUser } from "@/store/slices/user";
+
+function VerifyClient() {
+    const { user } = useAppSelector((s) => s.user);
+    const otpExpires = user?.otpExpires && new Date(user.otpExpires).getTime();
+    const time = new Date().getTime();
+    const timeDiff = otpExpires && (otpExpires - time) / 1000;
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
     const router = useRouter();
 
     const dispatch = useAppDispatch();
@@ -37,7 +47,10 @@ function VerifyClient() {
 
             if (response.data.status === "success") {
                 dispatch(setUser(response.data.user));
+<<<<<<< HEAD
                 dispatch(setOtpExpires(response.data.otpExpires));
+=======
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                 toast.success(response.data.message);
             }
         } catch (error) {
@@ -65,7 +78,11 @@ function VerifyClient() {
     return (
         <>
             {user && !user?.isVerified && (
+<<<<<<< HEAD
                 <main className=" grid gap-y-[3vh]  justify-items-center py-[4vh] md:py-[16vh] px-[2vw] text-center">
+=======
+                <main className=" grid justify-items-center py-[16vh] px-[2vw] gap-y-[1vh] text-center">
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                     <div>
                         <MdOutlineMarkEmailRead color="green" size={72} />
                     </div>
@@ -78,7 +95,11 @@ function VerifyClient() {
                             {pure(user?.email)}
                         </span>
                     </p>
+<<<<<<< HEAD
                     <Inputs timeDiff={timeDiff!} />
+=======
+                    <Inputs timeDiff={timeDiff} />
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                     <div className="flex items-center gap-x-[1vw]">
                         <p>Did not get the code ?</p>
                         <button

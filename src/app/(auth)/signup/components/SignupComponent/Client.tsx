@@ -7,7 +7,11 @@ import {
     writeIsLoading,
     writeIsSubmitted,
 } from "@/store/slices/auth";
+<<<<<<< HEAD
 import { setOtpExpires, setUser } from "@/store/slices/user";
+=======
+import { setUser } from "@/store/slices/user";
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
 import { SignupFormSchema } from "@/type/form";
 import { AxiosError } from "axios";
 import Link from "next/link";
@@ -46,7 +50,10 @@ function SignupClientComponent() {
                 if (response.data.status === "success") {
                     toast.success(response.data.message);
                     dispatch(setUser(response.data.user));
+<<<<<<< HEAD
                     dispatch(setOtpExpires(response.data.otpExpires));
+=======
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                     dispatch(writeErrors(null));
                     router.push("/verify");
                     sessionStorage.setItem(
@@ -72,7 +79,11 @@ function SignupClientComponent() {
     return (
         <>
             {!user && (
+<<<<<<< HEAD
                 <section className="grid place-content-center py-[2vh]">
+=======
+                <section className="grid place-content-center py-[4vh]">
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                     <div className="bg-blue-100 py-[1vh] px-[2vw] rounded-lg border-2 border-blue-200 shadow-md shadow-blue-200">
                         <article className="flex items-center gap-[1vw]">
                             <p>Already have an account ?</p>

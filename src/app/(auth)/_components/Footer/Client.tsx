@@ -16,8 +16,12 @@ function FooterClient() {
         (path === "forget-password" && user) ||
         (path === "reset-password" && user) ||
         (path === "verify" && user?.isVerified) ||
+<<<<<<< HEAD
         (path === "verify" && !user) ||
         (path === "new-user" && !user?.newUser);
+=======
+        (path === "verify" && !user);
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
 
     return (
         <footer
@@ -25,15 +29,32 @@ function FooterClient() {
             ${classCondition && "fixed bottom-0 left-1/2 -translate-x-1/2"}
         `}
         >
+<<<<<<< HEAD
             <Link
                 href={"/"}
                 className="c-btn relative w-10 aspect-square rounded-full"
             >
+=======
+            <Link href={"/"} className="c-btn ">
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                 <Image
                     src={
                         process.env.NEXT_PUBLIC_LOGO || "/logo-placeholder.svg"
                     }
+<<<<<<< HEAD
                     fill
+=======
+                    width={
+                        (process.env.NEXT_PUBLIC_LOGO_WIDTH as
+                            | number
+                            | undefined) || 80
+                    }
+                    height={
+                        (process.env.NEXT_PUBLIC_LOGO_HEIGHT as
+                            | number
+                            | undefined) || 17
+                    }
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                     priority
                     alt="logo link"
                 />

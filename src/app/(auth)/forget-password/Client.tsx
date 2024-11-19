@@ -51,7 +51,11 @@ function ForgetPasswordPageClient() {
     return (
         <>
             {!user && (
+<<<<<<< HEAD
                 <main className=" grid gap-y-[2vh] place-content-center justify-items-center py-[8vh] md:py-[16vh] px-[2vw]">
+=======
+                <main className=" grid place-content-center justify-items-center py-[16vh] gap-y-[2vh]">
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                     <Image
                         src={
                             process.env.NEXT_PUBLIC_LOGO ||
@@ -74,7 +78,11 @@ function ForgetPasswordPageClient() {
                     <h1 className="text-2xl">Forgot Your Password ?</h1>
 
                     <form
+<<<<<<< HEAD
                         className=" w-[120%] md:w-[150%] grid gap-[1vh] bg-blue-100 shadow-md shadow-blue-200 py-[2vh] px-[2vw] rounded-lg"
+=======
+                        className="w-[150%] grid gap-[1vh] bg-blue-100 shadow-md shadow-blue-200 py-[2vh] px-[2vw] rounded-lg"
+>>>>>>> 53a45dd3232ed3ff54076086937d8867dbdc20b6
                         onSubmit={sendResetOtp}
                     >
                         <label htmlFor="email" className="font-semibold">
